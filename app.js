@@ -2,18 +2,13 @@
 const express = require('express');
 // invoke express() and return an application object
 const app = express();
+const studentsController = require('./controllers/studentsController');
+
+app.use('/students', studentsController);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.get('/students', (req, res) => {
-  res.send('Here are the students')
-});
-
-app.get('/students/:name', (req, res) => {
-  const { name } = req.params;
-  res.send(`Profile: ${name}`);
-})
 
 module.exports = app;
